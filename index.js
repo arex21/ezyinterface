@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const PORT = 3010;
-
+const AWS = require("aws-sdk");
+const s3 = new AWS.S3()
 app.get('/:cid/:filename', (req, res) => {
   const {cid,filename} = req.params
   res.redirect(`https://${cid}.ipfs.w3s.link/${filename}`);
