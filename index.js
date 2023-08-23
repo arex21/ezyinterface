@@ -4,9 +4,11 @@ const PORT = 3010;
 const CyclicDb = require("@cyclic.sh/dynamodb")
 const db = CyclicDb("poised-gray-crabCyclicDB")
 const database = db.collection("db")
-app.get('/:cid/:filename', (req, res) => {
+app.get('/:cid/:filename', async (req, res) => {
   const {cid,filename} = req.params
-  res.redirect(`https://${cid}.ipfs.w3s.link/${filename}`);
+  const data = await database.get(cid)
+  let __cid =  data["props"]["hash"]
+  res.redirect(`https://${__cid}.ipfs.w3s.link/${filename}`);
 });
 app.get('/',(req,res)=>res.send("OK"))
 app.get('/save/:cid/:hash',async (req,res)=>{
