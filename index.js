@@ -17,7 +17,7 @@ app.get('/save/:cid/:hash',async (req,res)=>{
 app.get('/get/:cid/a/a',async(req,res)=>{
     const {cid} = req.params
     const data = await database.get(cid)
-    res.send(data)
+    res.send(data["props"]["hash"])
 })
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
