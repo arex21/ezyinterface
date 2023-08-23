@@ -17,7 +17,7 @@ app.get('/save/:cid/:hash',async (req,res)=>{
     }).promise()
     res.send("done")
 })
-app.get('/get/:cid',async(req,res)=>{
+app.get('/get/:cid/a/a',async(req,res)=>{
     const {cid} = req.params
     let my_file = await s3.getObject({
         Bucket: "cyclic-poised-gray-crab-ap-south-1",
